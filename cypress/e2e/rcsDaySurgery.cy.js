@@ -64,24 +64,32 @@ const handleRcsDaySrugeryStep1 = (isAccident) => {
   cy.get("body").trigger("keydown", { keyCode: 27 });
 
   // diagnosis
-  cy.get("#mat-select-4 > .mat-select-trigger > .mat-select-value").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("#mat-select-4 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains(isAccident ? "Fracture of shoulder" : "Acute bronchitis")
+    .click();
   cy.get("body").trigger("keydown", { keyCode: 27 });
 
   // hospital or clinic
   cy.get("#mat-radio-6 label").click();
 
   // hospital location
-  cy.get("#mat-select-5 > .mat-select-trigger > .mat-select-value").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("#mat-select-5 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains("Hong Kong")
+    .click();
 
   // hospital name
-  cy.get("#mat-select-6 > .mat-select-trigger > .mat-select-value").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("#mat-select-6 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains("Canossa Hospital (Caritas)")
+    .click();
 
   // surgery name
-  cy.get("#mat-input-4").click();
-  cy.get(".mat-autocomplete-panel mat-option:first-child").click();
+  cy.get("#mat-input-4").click().get("mat-option").contains("Highly selective vagotomy").click();
   cy.get("body").trigger("keydown", { keyCode: 27 });
 
   // surgery date
