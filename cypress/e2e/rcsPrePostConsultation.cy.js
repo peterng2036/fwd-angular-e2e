@@ -1,0 +1,110 @@
+const username = "support081";
+const password = "0000@Fwd";
+const policyNo = "13394353";
+
+const testCase032FileName = "032_life_claims_rcs_pre_post_consultation_accident";
+const testCase033FileName = "032_life_claims_rcs_pre_post_consultation_illness";
+
+describe("Rcs Pre-post consultation claim", () => {
+  beforeEach(() => {
+    cy.login(username, password);
+
+    cy.get(".menu-button-container > :nth-child(1)").click(); // select file a claim
+
+    cy.contains("Hospitalization").click();
+  });
+
+  it("should successfully submit rcs pre post consultation accident claim", () => {
+    // step 1
+    cy.contains("Skip").click();
+    handlePrePostConsultationStep1(true);
+    cy.screenshot(`${testCase032FileName}_step_1`);
+    cy.contains("Next").click();
+
+    cy.handleRcsStep2WithoutDefaultPayout(testCase032FileName);
+    cy.handleRcsStep3(testCase032FileName);
+    cy.handleRcsStep4(testCase032FileName);
+  });
+
+  it("should successfully submit rcs pre post consultation illness claim", () => {
+    // step 1
+    cy.contains("Skip").click();
+    handlePrePostConsultationStep1(false);
+    cy.screenshot(`${testCase033FileName}_step_1`);
+    cy.contains("Next").click();
+
+    cy.handleRcsStep2WithoutDefaultPayout(testCase033FileName);
+    cy.handleRcsStep3(testCase033FileName);
+    cy.handleRcsStep4(testCase033FileName);
+  });
+});
+
+const handlePrePostConsultationStep1 = (isAccident) => {
+  // policy
+  cy.get(".mat-select-placeholder").click();
+  cy.contains(policyNo).click();
+
+  // benefit type
+  cy.get("#benefitType").click();
+  cy.contains("Pre-consultation").click(); // select benefit type
+
+  // date of admission
+  cy.get("#mat-input-3").type("2023-07-01", { force: true });
+  cy.get("body").trigger("keydown", { keyCode: 27 });
+
+  // date of discharge
+  cy.get("#mat-input-4").type("2023-07-01", { force: true });
+  cy.get("body").trigger("keydown", { keyCode: 27 });
+
+  // illness or accident
+  if (isAccident) {
+    cy.get("#mat-radio-3 label").click();
+
+    // accident date
+    cy.get("#mat-input-5").type("2023-07-01", { force: true });
+    cy.get("body").trigger("keydown", { keyCode: 27 });
+  } else {
+    cy.get("#mat-radio-2 label").click();
+
+    // first symptom date
+    cy.get("#mat-input-8").type("2023-07-01", { force: true });
+    cy.get("body").trigger("keydown", { keyCode: 27 });
+  }
+
+  // diagnosis
+  cy.get("#mat-select-5 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
+  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("body").trigger("keydown", { keyCode: 27 });
+
+  // date of treatment
+  cy.get("#mat-input-6").type("2023-07-01", { force: true });
+  cy.get("body").trigger("keydown", { keyCode: 27 });
+
+  // hospital
+  cy.get("#mat-radio-6 label").click();
+
+  // hospital location
+  cy.get("#mat-select-6 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
+  cy.get(".mat-select-panel mat-option:first-child").click();
+
+  // hospital name
+  cy.get("#mat-select-7 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
+  cy.get(".mat-select-panel mat-option:first-child").click();
+
+  // treatment category
+  cy.get("#mat-select-4 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
+  cy.get(".mat-select-panel mat-option:first-child").click();
+
+  // total cost
+  if (isAccident) {
+    cy.get("#mat-input-8").type("100");
+  } else {
+    cy.get("#mat-input-9").type("100");
+  }
+
+  // receipts
+  cy.get(".upload-input").selectFile("cypress/fixtures/sample.png", { force: true });
+
+  // no other insurance coverage
+  cy.get("#mat-radio-9").click();
+};
