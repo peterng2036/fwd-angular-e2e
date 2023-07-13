@@ -27,14 +27,24 @@ describe("Policy service - change contact info", () => {
         // email
         cy.get('#mat-input-0').type('test@test.com');
 
+        cy.screenshot(`${testCase009FileName}_step_1`);
+
         // next
         cy.get('button').contains('Next').click();
 
         // ok
         cy.get('button').contains('OK').click();
 
+        cy.screenshot(`${testCase009FileName}_step_2`);
 
+        // next
+        cy.get('button').contains('Next').click();
 
+        // declare 
+        cy.get('#mat-checkbox-29 > .mat-checkbox-layout > .mat-checkbox-label').click();
 
+        cy.screenshot(`${testCase009FileName}_step_3`);
+
+        cy.get('button').contains('Next').click();
     })
 })
