@@ -61,7 +61,7 @@ const handleRcsDaySrugeryStep1 = (isAccident) => {
 
   // accident date or symptom date
   cy.get("#hsSymptomDate").type("2023-07-01", { force: true });
-  cy.get("body").trigger("keydown", { keyCode: 27 });
+  cy.pressEscape();
 
   // diagnosis
   cy.get("#mat-select-4 > .mat-select-trigger > .mat-select-value")
@@ -69,7 +69,7 @@ const handleRcsDaySrugeryStep1 = (isAccident) => {
     .get("mat-option")
     .contains(isAccident ? "Fracture of shoulder" : "Acute bronchitis")
     .click();
-  cy.get("body").trigger("keydown", { keyCode: 27 });
+  cy.pressEscape();
 
   // hospital or clinic
   cy.get("#mat-radio-6 label").click();
@@ -90,8 +90,8 @@ const handleRcsDaySrugeryStep1 = (isAccident) => {
 
   // surgery name
   cy.get("#mat-input-4").click().get("mat-option").contains("Highly selective vagotomy").click();
-  cy.get("body").trigger("keydown", { keyCode: 27 });
-
+  cy.pressEscape();
+  
   // surgery date
   cy.get("#surgeryDate").click();
   cy.get(".mat-calendar-body-today").click();

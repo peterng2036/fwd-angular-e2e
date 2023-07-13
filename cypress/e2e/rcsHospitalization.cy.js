@@ -50,11 +50,11 @@ const handleRcsHospitalizationStep1 = (isAccident) => {
 
   // date of admission
   cy.get("#hsAdmissionDate").type("2023-07-01", { force: true });
-  cy.get("body").trigger("keydown", { keyCode: 27 });
+  cy.pressEscape();
 
   // date of discharge
   cy.get("#hsDischargeDate").type("2023-07-01", { force: true });
-  cy.get("body").trigger("keydown", { keyCode: 27 });
+  cy.pressEscape();
 
   // illness or accident
   if (isAccident) {
@@ -67,20 +67,29 @@ const handleRcsHospitalizationStep1 = (isAccident) => {
 
   // first symptom date or accident date
   cy.get("#hsSymptomDate").type("2023-07-01", { force: true });
-  cy.get("body").trigger("keydown", { keyCode: 27 });
+  cy.pressEscape();
 
   // diagnoais
-  cy.get("#mat-select-5 > .mat-select-trigger > .mat-select-value").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
-  cy.get("body").trigger("keydown", { keyCode: 27 });
+  cy.get("#mat-select-5 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains(isAccident ? "Fracture of shoulder" : "Acute bronchitis")
+    .click();
+  cy.pressEscape();
 
   // hospital location
-  cy.get("#mat-select-3 > .mat-select-trigger > .mat-select-value").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("#mat-select-3 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains("Hong Kong")
+    .click();
 
   //hospital name
-  cy.get("#mat-select-6 > .mat-select-trigger > .mat-select-value").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("#mat-select-6 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains("Canossa Hospital (Caritas)")
+    .click();
 
   // other insurance coverage
   cy.get("#mat-radio-9 > .mat-radio-label > .mat-radio-label-content").click();

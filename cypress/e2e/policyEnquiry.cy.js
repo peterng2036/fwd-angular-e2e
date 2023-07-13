@@ -70,10 +70,19 @@ describe("eService Dashboard", () => {
   });
 
   it("should filter policy by policy status no longer inforce", () => {
-    cy.get(".mat-menu-trigger > .primary-button").click();
-    cy.get(".mat-menu-content > :nth-child(1)").click();
-    cy.get(".ng-star-inserted > .primary-button").click();
-    cy.get(".mat-menu-content > :nth-child(2)").click();
+    // policy status
+    cy.get(".mat-menu-trigger > .primary-button")
+      .click()
+      .get("button")
+      .contains('Policy Status')
+      .click();
+    // no longer in force
+    cy.get(".ng-star-inserted > .primary-button")
+      .click()
+      .get("button")
+      .contains('No longer in force')
+      .click();
+
     cy.get(":nth-child(3) > .primary-button").click();
 
     cy.get(".policy-card-container").should("include.text", "No longer in force");
@@ -93,7 +102,7 @@ describe("eService Dashboard", () => {
     cy.get(".mat-menu-trigger > .primary-button").click();
     cy.get(".mat-menu-content > :nth-child(2)").click();
     cy.get('[placeholder="From"]').type("2021-01-01", { force: true });
-    cy.get("body").trigger("keydown", { keyCode: 27 });
+    cy.pressEscape();
     cy.get(":nth-child(3) > .primary-button").click();
 
     cy.get("policy-card").should("have.length", 6);
@@ -105,9 +114,9 @@ describe("eService Dashboard", () => {
     cy.get(".mat-menu-trigger > .primary-button").click();
     cy.get(".mat-menu-content > :nth-child(2)").click();
     cy.get('[placeholder="From"]').type("2021-01-01", { force: true });
-    cy.get("body").trigger("keydown", { keyCode: 27 });
+    cy.pressEscape();
     cy.get('[placeholder="To"]').type("2022-01-01", { force: true });
-    cy.get("body").trigger("keydown", { keyCode: 27 });
+    cy.pressEscape();
     cy.get(":nth-child(3) > .primary-button").click();
 
     cy.get("policy-card").should("have.length", 5);

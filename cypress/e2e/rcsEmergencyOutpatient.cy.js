@@ -57,8 +57,11 @@ const handleRcsDaySrugeryStep1 = (isHospital) => {
   cy.pressEscape();
 
   // diagnosis
-  cy.get("#mat-select-3 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("#mat-select-3 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains('Hand or Wrist (Sprain/Contusion/Laceration)')
+    .click();
   cy.pressEscape();
 
   // date of treatment
@@ -72,20 +75,29 @@ const handleRcsDaySrugeryStep1 = (isHospital) => {
   }
 
   // location
-  cy.get("#mat-select-6 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("#mat-select-6 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains("Hong Kong")
+    .click();
 
   if (isHospital) {
     // hospital name
-    cy.get("#mat-select-7 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
-    cy.get(".mat-select-panel mat-option:first-child").click();
+    cy.get("#mat-select-7 > .mat-select-trigger > .mat-select-value")
+      .click()
+      .get("mat-option")
+      .contains("Canossa Hospital (Caritas)")
+      .click();
   } else {
     cy.get("#mat-input-6").type("testing clinic name");
   }
 
   // treatment category
-  cy.get(":nth-child(4) > .col-12 > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get(":nth-child(4) > .col-12 > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix")
+    .click()
+    .get("mat-option")
+    .contains("Western consultation")
+    .click();
 
   // consultation fee
   if (isHospital) {

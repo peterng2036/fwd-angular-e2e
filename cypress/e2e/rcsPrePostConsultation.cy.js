@@ -50,11 +50,11 @@ const handlePrePostConsultationStep1 = (isAccident) => {
 
   // date of admission
   cy.get("#mat-input-3").type("2023-07-01", { force: true });
-  cy.get("body").trigger("keydown", { keyCode: 27 });
+  cy.pressEscape();
 
   // date of discharge
   cy.get("#mat-input-4").type("2023-07-01", { force: true });
-  cy.get("body").trigger("keydown", { keyCode: 27 });
+  cy.pressEscape();
 
   // illness or accident
   if (isAccident) {
@@ -62,38 +62,50 @@ const handlePrePostConsultationStep1 = (isAccident) => {
 
     // accident date
     cy.get("#mat-input-5").type("2023-07-01", { force: true });
-    cy.get("body").trigger("keydown", { keyCode: 27 });
+    cy.pressEscape();
   } else {
     cy.get("#mat-radio-2 label").click();
 
     // first symptom date
     cy.get("#mat-input-8").type("2023-07-01", { force: true });
-    cy.get("body").trigger("keydown", { keyCode: 27 });
+    cy.pressEscape();
   }
 
   // diagnosis
-  cy.get("#mat-select-5 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
-  cy.get("body").trigger("keydown", { keyCode: 27 });
+  cy.get("#mat-select-5 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains(isAccident ? "Fracture of shoulder" : "Acute bronchitis")
+    .click();
+  cy.pressEscape();
 
   // date of treatment
   cy.get("#mat-input-6").type("2023-07-01", { force: true });
-  cy.get("body").trigger("keydown", { keyCode: 27 });
+  cy.pressEscape();
 
   // hospital
   cy.get("#mat-radio-6 label").click();
 
   // hospital location
-  cy.get("#mat-select-6 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("#mat-select-6 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains("Hong Kong")
+    .click();
 
   // hospital name
-  cy.get("#mat-select-7 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("#mat-select-7 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains("Canossa Hospital (Caritas)")
+    .click();
 
   // treatment category
-  cy.get("#mat-select-4 > .mat-select-trigger > .mat-select-value > .mat-select-placeholder").click();
-  cy.get(".mat-select-panel mat-option:first-child").click();
+  cy.get("#mat-select-4 > .mat-select-trigger > .mat-select-value")
+    .click()
+    .get("mat-option")
+    .contains("Western consultation")
+    .click();
 
   // total cost
   if (isAccident) {

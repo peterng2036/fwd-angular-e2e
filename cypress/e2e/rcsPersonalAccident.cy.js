@@ -27,24 +27,30 @@ describe("Rcs Personal Accident claim", () => {
 
     // accident date
     cy.get("#paAccidentDate").type("2023-07-01", { force: true });
-    cy.get("body").trigger("keydown", { keyCode: 27 });
+    cy.pressEscape();
 
     // treatment fee
     cy.get("#hAccidentTemp").type("100");
 
     // date of treatment
     cy.get("#dateOfConsultationDatePicker").type("2023-07-01", { force: true });
-    cy.get("body").trigger("keydown", { keyCode: 27 });
+    cy.pressEscape();
 
     // treatment category
-    cy.get("#mat-select-4").click();
-    cy.get(".mat-select-panel mat-option:first-child").click();
-    cy.get("body").trigger("keydown", { keyCode: 27 });
+    cy.get("#mat-select-4 > .mat-select-trigger > .mat-select-value")
+      .click()
+      .get("mat-option")
+      .contains("Bone setter treatment")
+      .click();
+    cy.pressEscape();
 
     // diagnoais
-    cy.get("#mat-select-5").click();
-    cy.get(".mat-select-panel mat-option:first-child").click();
-    cy.get("body").trigger("keydown", { keyCode: 27 });
+    cy.get("#mat-select-5 > .mat-select-trigger > .mat-select-value")
+      .click()
+      .get("mat-option")
+      .contains('Hand or Wrist (Sprain/Contusion/Laceration)')
+      .click();
+    cy.pressEscape();
 
     // receipts
     cy.get(".claim-file-upload-input").selectFile("cypress/fixtures/sample.png", { force: true });
