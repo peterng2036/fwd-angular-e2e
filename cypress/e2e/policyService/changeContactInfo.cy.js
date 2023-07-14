@@ -18,7 +18,7 @@ describe("Policy service - change contact info", () => {
         cy.wait(2000);
     });
 
-    it("001 - should successfully change address", () => {
+    it.only("001 - should successfully change address", () => {
         // policy card
         cy.contains(policyNo).first().click();
 
@@ -53,6 +53,10 @@ describe("Policy service - change contact info", () => {
         cy.screenshot(`${testCase001FileName}_step_5`)
         // Next
         cy.contains('Submit').click();
+
+        cy.get('.complete-section.ng-star-inserted > .changed-policy-container > .ng-star-inserted > .complete-info-item').should('exist');
+
+        cy.screenshot(`${testCase001FileName}_step_6`)
     })
 
     it("002 - should successfully change address and email", () => {
