@@ -11,7 +11,7 @@ const testCase058FileName = "058_policy_enuiry_filter_by_next_premium_pay_start_
 const testCase059FileName = "059_policy_enuiry_filter_by_invalid_person_insured";
 const testCase060FileName = "060_policy_enuiry_filter_by_valid_person_insured";
 
-describe("eService Dashboard", () => {
+describe("Policy Enquiry funcionalities", () => {
   beforeEach(() => {
     cy.login(username, password);
 
