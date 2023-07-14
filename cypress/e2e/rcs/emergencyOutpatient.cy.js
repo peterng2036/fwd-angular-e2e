@@ -16,7 +16,7 @@ describe("Rcs Emergency Outpatient claim without default payout", () => {
     cy.contains("Clinical/ day surgery").click();
   });
 
-  it("should successfully submit rcs emergency outpatient hospital claim", () => {
+  it("028 - should successfully submit rcs emergency outpatient hospital claim", () => {
     cy.contains("Skip").click();
 
     // step 1
@@ -29,7 +29,7 @@ describe("Rcs Emergency Outpatient claim without default payout", () => {
     cy.handleRcsStep4(testCase028FileName);
   });
 
-  it("should successfully submit rcs emergency outpatient clinic claim", () => {
+  it("029 - should successfully submit rcs emergency outpatient clinic claim", () => {
     cy.contains("Skip").click();
 
     // step 1

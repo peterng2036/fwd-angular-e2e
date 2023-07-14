@@ -20,12 +20,12 @@ describe("eService Dashboard", () => {
     cy.login(username, password);
   });
 
-  it("should show PO name in the dashboard", () => {
+  it("041 - should show PO name in the dashboard", () => {
     cy.get(".greeting-content > h2").should("contain.text", poName);
     cy.screenshot(testCase041FileName);
   });
 
-  it("should change the language from english to chinese", () => {
+  it("042 - should change the language from english to chinese", () => {
     cy.get(".page-container > fwd-header > .header > .language-swtich-container > #ctilCtrlLang_zh-hant").click();
 
     cy.contains("我們今天能為您提供什麼幫助？").should("exist");
@@ -38,17 +38,17 @@ describe("eService Dashboard", () => {
     cy.screenshot(testCase042FileName);
   });
 
-  it("should show eHealth card menu button", () => {
+  it("043 - should show eHealth card menu button", () => {
     cy.get('[routerlink="/fwd/eligibleClaimPolicyList/eligibleClaimPolicyList/ehealthcare-card"]').should("exist");
     cy.screenshot(testCase043FileName);
   });
 
-  it("should show clinic search menu button", () => {
+  it("044 - should show clinic search menu button", () => {
     cy.get('[routerlink="/fwd/hospitalAndClinicSearch"]').should("exist");
     cy.screenshot(testCase044FileName);
   });
 
-  it("should show basic menu button", () => {
+  it("045 - should show basic menu button", () => {
     cy.get(".menu-button-container").contains("File a claim").should("exist");
     cy.get(".menu-button-container").contains("Update policy information").should("exist");
     cy.get('[routerlink="/fwd/ecorrespondence/life"]').should("exist");
@@ -56,7 +56,7 @@ describe("eService Dashboard", () => {
     cy.screenshot(testCase045FileName);
   });
 
-  it("should show life insurance claim type list in file a claim modal", () => {
+  it("046 - should show life insurance claim type list in file a claim modal", () => {
     cy.get(".menu-button-container > :nth-child(1)").click();
 
     cy.get(".page-container > .modal > .content").contains("Life insurance").should("exist");
@@ -69,7 +69,7 @@ describe("eService Dashboard", () => {
     cy.screenshot(testCase046FileName);
   });
 
-  it("should show group medic claim type list in file a claim modal", () => {
+  it("047 - should show group medic claim type list in file a claim modal", () => {
     cy.get(".menu-button-container > :nth-child(1)").click();
 
     cy.get('[routerlink="/fwd/eligibleClaimPolicyList/eligibleClaimPolicyList/hospitalization"]').should("exist");
@@ -78,13 +78,13 @@ describe("eService Dashboard", () => {
     cy.screenshot(testCase047FileName);
   });
 
-  it("should show notification message", () => {
+  it("050 - should show notification message", () => {
     cy.get("notifications").should("exist");
 
     cy.screenshot(testCase050FileName);
   });
 
-  it("should show claim tracker", () => {
+  it("051 - should show claim tracker", () => {
     cy.get(".claim-card-container").should("exist");
 
     cy.screenshot(testCase051FileName);
@@ -96,7 +96,7 @@ describe("eService Dashboard - Opt In", () => {
     cy.login(optInusername, password);
   });
 
-  it("should show opt in menu button in update policy information modal", () => {
+  it("048 - should show opt in menu button in update policy information modal", () => {
     cy.contains("Update policy information").click();
 
     cy.get('[routerlink="/fwd/optInOptOut"]').should("exist");

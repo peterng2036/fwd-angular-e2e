@@ -14,7 +14,7 @@ describe("Rcs Hospitalization claim", () => {
     cy.contains("Hospitalization").click();
   });
 
-  it("should successfully submit rcs hospital accident claim", () => {
+  it("030 - should successfully submit rcs hospital accident claim", () => {
     // step 1
     cy.contains("Skip").click();
     handleRcsHospitalizationStep1(true);
@@ -26,7 +26,7 @@ describe("Rcs Hospitalization claim", () => {
     cy.handleRcsStep4(testCase030FileName);
   });
 
-  it("should successfully submit rcs hospital illness claim", () => {
+  it("031 - should successfully submit rcs hospital illness claim", () => {
     // step 1
     cy.contains("Skip").click();
     handleRcsHospitalizationStep1(false);

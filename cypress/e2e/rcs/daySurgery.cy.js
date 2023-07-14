@@ -16,7 +16,7 @@ describe("Rcs Day Surgery claim without default payout", () => {
     cy.contains("Clinical/ day surgery").click();
   });
 
-  it("should successfully submit rcs day srugery accident claim", () => {
+  it("023 - should successfully submit rcs day srugery accident claim", () => {
     cy.contains("Skip").click();
 
     // step 1
@@ -29,7 +29,7 @@ describe("Rcs Day Surgery claim without default payout", () => {
     cy.handleRcsStep4(testCase023FileName);
   });
 
-  it("should successfully submit rcs day srugery illness claim", () => {
+  it("025 - should successfully submit rcs day srugery illness claim", () => {
     cy.contains("Skip").click();
 
     // step 1

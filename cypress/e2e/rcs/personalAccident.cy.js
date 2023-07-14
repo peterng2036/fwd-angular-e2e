@@ -13,7 +13,7 @@ describe("Rcs Personal Accident claim", () => {
     cy.contains("Personal accident").click();
   });
 
-  it("should successfully submit rcs personal accident claim without default payout", () => {
+  it("021 - should successfully submit rcs personal accident claim without default payout", () => {
     // step 1
     cy.contains("Skip").click();
 

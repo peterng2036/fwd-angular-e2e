@@ -20,7 +20,7 @@ describe("Policy Enquiry funcionalities", () => {
     cy.wait(4000);
   });
 
-  it("should sort policy by product name", () => {
+  it("052 - should sort policy by product name", () => {
     cy.get("#productName > .mat-radio-label > .mat-radio-label-content").click();
 
     cy.get(".policy-card-container > :nth-child(1)").contains("AECONOLIFE 20").should("exist");
@@ -37,7 +37,7 @@ describe("Policy Enquiry funcionalities", () => {
     cy.screenshot(testCase052FileName);
   });
 
-  it("should sort policy by commencement date", () => {
+  it("053 - should sort policy by commencement date", () => {
     cy.get("#commencementDate  > .mat-radio-label > .mat-radio-label-content").click();
 
     // first policy card with N/A as commencement date
@@ -51,7 +51,7 @@ describe("Policy Enquiry funcionalities", () => {
     cy.screenshot(testCase053FileName);
   });
 
-  it("should filter policy by policy status inforce", () => {
+  it("054 - should filter policy by policy status inforce", () => {
     cy.get(".mat-menu-trigger > .primary-button").click();
     cy.get(".mat-menu-content > :nth-child(1)").click();
     cy.get(":nth-child(3) > .primary-button").click();
@@ -69,7 +69,7 @@ describe("Policy Enquiry funcionalities", () => {
     cy.screenshot(`${testCase054FileName}-zh`);
   });
 
-  it("should filter policy by policy status no longer inforce", () => {
+  it("055 - should filter policy by policy status no longer inforce", () => {
     // policy status
     cy.get(".mat-menu-trigger > .primary-button")
       .click()
@@ -98,7 +98,7 @@ describe("Policy Enquiry funcionalities", () => {
     cy.screenshot(`${testCase055FileName}-zh`);
   });
 
-  it("should show 6 policy after filtering policy by next premium start date", () => {
+  it("056 - should show 6 policy after filtering policy by next premium start date", () => {
     cy.get(".mat-menu-trigger > .primary-button").click();
     cy.get(".mat-menu-content > :nth-child(2)").click();
     cy.get('[placeholder="From"]').type("2021-01-01", { force: true });
@@ -110,7 +110,7 @@ describe("Policy Enquiry funcionalities", () => {
     cy.screenshot(testCase056FileName);
   });
 
-  it("should show 5 policy after filtering policy by next premium start date and end date", () => {
+  it("058 - should show 5 policy after filtering policy by next premium start date and end date", () => {
     cy.get(".mat-menu-trigger > .primary-button").click();
     cy.get(".mat-menu-content > :nth-child(2)").click();
     cy.get('[placeholder="From"]').type("2021-01-01", { force: true });
@@ -124,7 +124,7 @@ describe("Policy Enquiry funcionalities", () => {
     cy.screenshot(testCase058FileName);
   });
 
-  it("should show 3 policy after filtering by valid person insured", () => {
+  it("059 - should show 3 policy after filtering by valid person insured", () => {
     cy.get(".mat-menu-trigger > .primary-button").click();
     cy.get(".mat-menu-content > :nth-child(3)").click();
     cy.get("#mat-input-2").type("XXXXX FU WAI");
@@ -135,7 +135,7 @@ describe("Policy Enquiry funcionalities", () => {
     cy.screenshot(testCase059FileName);
   });
 
-  it("should show no policy after filtering by invalid person insured", () => {
+  it("060 - should show no policy after filtering by invalid person insured", () => {
     cy.get(".mat-menu-trigger > .primary-button").click();
     cy.get(".mat-menu-content > :nth-child(3)").click();
     cy.get("#mat-input-2").type("invalid person insured");

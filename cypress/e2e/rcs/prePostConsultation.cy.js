@@ -14,7 +14,7 @@ describe("Rcs Pre-post consultation claim", () => {
     cy.contains("Hospitalization").click();
   });
 
-  it("should successfully submit rcs pre post consultation accident claim", () => {
+  it("032 - should successfully submit rcs pre post consultation accident claim", () => {
     // step 1
     cy.contains("Skip").click();
     handlePrePostConsultationStep1(true);
@@ -26,7 +26,7 @@ describe("Rcs Pre-post consultation claim", () => {
     cy.handleRcsStep4(testCase032FileName);
   });
 
-  it("should successfully submit rcs pre post consultation illness claim", () => {
+  it("033 - should successfully submit rcs pre post consultation illness claim", () => {
     // step 1
     cy.contains("Skip").click();
     handlePrePostConsultationStep1(false);
