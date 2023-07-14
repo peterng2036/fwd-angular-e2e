@@ -9,7 +9,7 @@ const testCase008FileName = "007_policy_service_upload_document_id";
 describe("Policy service - change contact info", () => {
     beforeEach(() => {
         cy.login(username, password);
-        cy.visit("/policyEnquiryv2/fromShortCut/documentUpload");
+        cy.visit("/web11/fwd/policyEnquiryv2/fromShortCut/documentUpload");
         cy.wait(2000);
         // policy card
         cy.contains(policyNo).first().click();

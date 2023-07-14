@@ -10,7 +10,7 @@ const testCase013FileName = "013_policy_service_update_form_duplicate_policy";
 describe("Policy Service Update Form", () => {
     beforeEach(() => {
         cy.login(username, password);
-        cy.visit("/policyEnquiryv2/fromShortCut/ePOSForm");
+        cy.visit("/web11/fwd/policyEnquiryv2/fromShortCut/ePOSForm");
         // policy card
         cy.contains(policyNo).first().click();
     });

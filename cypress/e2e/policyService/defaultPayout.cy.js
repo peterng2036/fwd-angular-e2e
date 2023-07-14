@@ -8,7 +8,7 @@ const testCase009FileName = "009_policy_service_default_payout";
 describe("Policy service - change contact info", () => {
     beforeEach(() => {
         cy.login(username, password);
-        cy.visit("/eligibleClaimPolicyList/eligibleClaimPolicyList/defaultPayoutMethod");
+        cy.visit("/web11/fwd/eligibleClaimPolicyList/eligibleClaimPolicyList/defaultPayoutMethod");
         // policy card
         cy.contains(policyNo).first().click();
     });

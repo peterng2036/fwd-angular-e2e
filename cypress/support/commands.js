@@ -30,7 +30,10 @@ Cypress.Screenshot.defaults({
 });
 
 Cypress.Commands.add("login", (username, password) => {
-  cy.visit("/login");
+  // skip campaign verification step
+  cy.intercept('POST', '/api11/api/v1/changeRequest/verifyCampaignByCustomerId', { fixture: 'verifyCampaignByCustomerId.json' }).as('getverifyCampaignByCustomerId')
+
+  cy.visit("/web11/fwd/login");
 
   cy.get(
     '[formcontrolname="email"] > .mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix'

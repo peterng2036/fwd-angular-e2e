@@ -14,7 +14,7 @@ const testCase006FileName = "006_policy_service_change_address_with_crs_facta";
 describe("Policy service - change contact info", () => {
     beforeEach(() => {
         cy.login(username, password);
-        cy.visit("/policyEnquiryv2/fromShortCut/contact");
+        cy.visit("/web11/fwd/policyEnquiryv2/fromShortCut/contact");
         cy.wait(2000);
     });
 
